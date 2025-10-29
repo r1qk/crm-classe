@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Riquelme",
+    "company": "FIAP",
+    "email": "r@gmail",
+    "stage": "novo",
+    "created": "2025-10-08"
+  },
+  {
+    "name": "Augusto",
+    "company": "CCJC",
+    "email": "augusto@gmail.com",
+    "stage": "novo",
+    "created": "2025-10-15"
+  },
+  {
+    "name": "Agatha",
+    "company": "Realitas",
+    "email": "21",
+    "stage": "novo",
+    "created": "2025-10-29"
+  }
+]
