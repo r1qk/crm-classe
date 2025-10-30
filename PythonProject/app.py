@@ -1,6 +1,6 @@
 # from stages import model_leads
 from model import Lead
-from stages import DEFAULT_STAGE #trocar por STAGES
+from stages import stage_status #trocar por stage_status
 from repo import LeadRepository
 
 lead_backend = LeadRepository()
@@ -10,7 +10,7 @@ def add_lead():
     company = input("Empresa: ")
     email = input("Email: ")
 
-    lead = Lead(name, company, email, DEFAULT_STAGE)
+    lead = Lead(name, company, email, stage_status)
     modeled_lead = lead.model_leads() #dicionário
     lead_backend.create_lead(modeled_lead) # OBScriar um metodo pra modificar os estágios depois
     print("Lead adicionado")
@@ -23,9 +23,9 @@ def list_leads():
         print("Nenhum lead ainda")
         return
 
-    print(f"\n## | {"Nome":<20} | {"Empresa":<20} | {"Email":<20}") #padroniza espaço
+    print(f"\n## | {"Nome":<20} | {"Empresa":<20} | {"Email":<20} | {"Status":<20}") #padroniza espaço
     for i, lead in enumerate(leads):
-        print(f"{i:02d} | {lead["name"]:<20} | {lead["company"]:<20} | {lead["email"]:<20}") #i:02d é duas casas decimais
+        print(f"{i:02d} | {lead["name"]:<20} | {lead["company"]:<20} | {lead["email"]:<20} | {lead["stage"]:<20}") #i:02d é duas casas decimais
 
 def search_leads():
     user_search = input("Buscar por: ").strip().lower() #.strip tira os espaços do início e fim
@@ -37,7 +37,7 @@ def search_leads():
     results = []
 
     for i, lead in enumerate(leads):
-        lead_str = f"{lead["name"]} {lead["company"]} {lead["email"]}".lower()
+        lead_str = f"{lead["name"]} {lead["company"]} {lead["email"]} {lead["stage"]}".lower()
         if user_search in lead_str:
             results.append(lead)
 
@@ -45,9 +45,9 @@ def search_leads():
         print("Nada encontrado!")
         return
 
-    print(f"\n## | {"Nome":<20} | {"Empresa":<20} | {"Email":<20}")  # padroniza espaço
+    print(f"\n## | {"Nome":<20} | {"Empresa":<20} | {"Email":<20} | {"Status":<20}")  # padroniza espaço
     for i, lead in enumerate(results):
-        print(f"{i:02d} | {lead["name"]:<20} | {lead["company"]:<20} | {lead["email"]:<20}")  # i:02d é duas casas decimais
+        print(f"{i:02d} | {lead["name"]:<20} | {lead["company"]:<20} | {lead["email"]:<20} | {lead["stage"]:<20}")  # i:02d é duas casas decimais
 
 def export_leads():
     path_csv = lead_backend.export_csv()

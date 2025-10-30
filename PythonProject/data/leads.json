@@ -19,5 +19,12 @@
     "email": "21",
     "stage": "novo",
     "created": "2025-10-29"
+  },
+  {
+    "name": "Mia",
+    "company": "Ordem",
+    "email": "mia@gmail",
+    "stage": "novo",
+    "created": "2025-10-30"
   }
 ]

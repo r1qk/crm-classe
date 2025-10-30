@@ -1,5 +1,4 @@
 from datetime import date
-#
 
 class Lead:
     def __init__(self, name, company, email, stage):
