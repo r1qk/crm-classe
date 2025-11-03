@@ -1,23 +1,27 @@
 # from stages import model_leads
 from model import Lead
-from stages import stage_status #trocar por stage_status
+from stages import stage_status #1
+# from stages import DEFAULT_STAGES #2
 from repo import LeadRepository
 
+
 lead_backend = LeadRepository()
+
 #simula o frontend
 def add_lead():
     name = input("Nome: ")
     company = input("Empresa: ")
     email = input("Email: ")
+    stage_client = str(stage_status())
+    lead = Lead(name, company, email, stage_client) #1
 
-    lead = Lead(name, company, email, stage_status)
     modeled_lead = lead.model_leads() #dicionário
     lead_backend.create_lead(modeled_lead) # OBScriar um metodo pra modificar os estágios depois
     print("Lead adicionado")
 
 def list_leads():
     leads = lead_backend.read_leads()
-    print(leads)
+    # print(leads)
 
     if not leads:
         print("Nenhum lead ainda")
